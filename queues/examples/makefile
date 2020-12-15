@@ -1,4 +1,4 @@
-QUEUE_DIR = ../
+QUEUE_DIR = ..
 
 
 # ****************************************************************************
@@ -31,6 +31,14 @@ LIBDRS =
 # ****************************************************************************
 
 INCDRS = -I$(QUEUE_DIR)/include
+
+# ****************************************************************************
+# *                                                                          *
+# *  Define the directories in which to search for source files.             *
+# *                                                                          *
+# ****************************************************************************
+
+SRCDRS = $(QUEUE_DIR)/source
 
 # ****************************************************************************
 # *                                                                          *
@@ -75,7 +83,7 @@ EXE    = queue
 # ****************************************************************************
 
 CC     = gcc
-LL     = c89
+LL     = gcc
 CFLAGS =
 LFLAGS =
 
@@ -95,12 +103,12 @@ all:
 	make -f $(MAKNAM) clean
 	make -f $(MAKNAM) depend
 
-depend:
-	makedepend $(INCDRS) -f $(MAKNAM) $(SRCFLS)
-	make -f $(MAKNAM) $(EXE)
-
 clean:
 	-rm $(EXE)
 	-rm $(OBJFLS)
+
+ready:
+	@sed -i -n "/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p" ../source/queue.c
+	@sed -i -n "/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p" ../include/queue.h
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
