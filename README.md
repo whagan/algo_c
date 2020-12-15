@@ -1,5 +1,9 @@
 ## Mastering Algorithms with C
 
+### Queues
+
+* queue
+
 <br/>Follow-along tutorial.<br/>
 
 
