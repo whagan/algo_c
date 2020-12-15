@@ -1,7 +1,7 @@
 all: linklist
 CC=gcc
 INCLUDE_DIR=../../include
-SOURCE_DIR=../../source/list
+SOURCE_DIR=../../source/
 OBJS = list_driver.o list.o 
 INST_DIR = /usr/bin
 
@@ -35,5 +35,5 @@ uninstall:
 			@echo "linklist successfully uninstalled from $(INST_DIR)"
 
 ready:
-			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../source/list/list.c
+			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../source/list.c
 			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../include/list.h

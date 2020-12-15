@@ -1,7 +1,7 @@
 all: clinklist
 CC=gcc
 INCLUDE_DIR=../../include
-SOURCE_DIR=../../source/clist
+SOURCE_DIR=../../source/
 OBJS = clist_driver.o clist.o 
 INST_DIR = /usr/bin
 
@@ -35,5 +35,5 @@ uninstall:
 			@echo "clinklist successfully uninstalled from $(INST_DIR)"
 
 ready:
-			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../source/clist/clist.c
+			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../source/clist.c
 			@sed -i -n '/^$$\|^#include\|^#endif\|_H$$\|*$$\|\/$$/p' ../../include/clist.h
