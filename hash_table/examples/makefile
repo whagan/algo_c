@@ -1,12 +1,13 @@
-all: chtbl
+all: chtbl 
 CC = gcc
 INCLUDE_DIR = ../include
 SOURCE_DIR = ../source
-OBJS = chtbl_driver.o list.o stack.o 
+OBJS = chtbl_driver.o list.o 
 INST_DIR = /usr/bin
 
 chtbl: $(OBJS)
-	   $(CC) -o stack $(OBJS)
+	   $(CC) -o chtbl $(OBJS)
+
 stack_driver.o:	stack_driver.o 
 				$(CC) -c stack_driver.c -I$(INCLUDE_DIR)
 list.o: $(SOURCE_DIR)/list.c 
@@ -18,7 +19,7 @@ clean:
 		-@rm -f $(OBJS)
 
 cleanexe:
-		-@rm -f stack 
+		-@rm -f chtbl 
 
 install:	stack 
 			@if [ -d $(INST_DIR) ];	\
