@@ -2,7 +2,7 @@
 
 ### Queues
 
-* queue
+* hash tables
 
 <br/>Follow-along tutorial.<br/>
 
