@@ -1,6 +1,6 @@
 ## Mastering Algorithms with C
 
-### Queues
+### Hash Tables
 
 * hash tables
 
