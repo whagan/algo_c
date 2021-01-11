@@ -1,5 +1,9 @@
 ## Mastering Algorithms with C
 
+### Hash Tables
+
+* hash tables
+
 <br/>Follow-along tutorial.<br/>
 
 

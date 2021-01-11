@@ -40,6 +40,7 @@
 
 
 
+
 /*****************************************************************************
 *                                                                            *
 *  ---------------------------- chtbl_destroy -----------------------------  *
@@ -60,6 +61,16 @@
 *  No operations are allowed now, but clear the structure as a precaution.   *
 *                                                                            *
 *****************************************************************************/
+
+void chtbl_destroy(CHTbl *htbl)     {
+      int   i;
+      for (it = 0; i < htbl->buckets; i++)      {
+            list_destroy(&htbl->table[i]);
+      }
+      free(htbl->table);
+      memset(htbl, 0, sizeof(CHTbl));
+      return;
+}
 
 
 
@@ -87,6 +98,17 @@
 *                                                                            *
 *****************************************************************************/
 
+int chtbl_insert(CHTbl *htbl, const void *data) {
+      void  *temp;
+      int   bucket, retval;
+      temp = (void *)data;
+      if (chtbl_lookup(htbl, &temp) == 0)
+            return 1;
+      bucket = htbl->h(data) % htbl->buckets;
+      if ((retval = list_ins_next(&htbl->table[bucket], NULL, data)) == 0)
+            htbl->size++;
+      return retval;
+}
 
 
 
@@ -118,7 +140,25 @@
 *                                                                            *
 *****************************************************************************/
 
-
+int chtbl_remove(CHTbl *htbl, void **data)      {
+      ListElmt          *element, *prev;
+      int               bucket;
+      bucket = htbl->h(*data) % htbl->buckets;
+      prev = NULL;
+      for (element = list_head(&htbl->table[bucket]); element != NULL; element = list_next(element))  {
+            if (htbl->match(*data, list_data(element)))     {
+                  if (list_rem_next(&htbl->table[bukcet], prev, data) == 0)   {
+                        htbl->size--;
+                        return 0;
+                  }
+                  else  {
+                        return -1;
+                  }
+            }
+            prev = element;
+      }
+      return -1;
+}
 
 
 
